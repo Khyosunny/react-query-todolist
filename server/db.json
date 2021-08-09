@@ -1,0 +1,22 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "todo": "리액트 쿼리 개념 학습",
+      "completed": false,
+      "createAt": "2021.08.09"
+    },
+    {
+      "id": 2,
+      "todo": "리액트 쿼리 사용하기",
+      "completed": false,
+      "createAt": "2021.08.09"
+    },
+    {
+      "id": 3,
+      "todo": "프로그래머스 문제 풀기",
+      "completed": false,
+      "createAt": "2021.08.05"
+    }
+  ]
+}
