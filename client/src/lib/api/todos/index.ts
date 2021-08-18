@@ -4,7 +4,6 @@ export interface TodoType {
   id: number;
   todo: string;
   completed: boolean;
-  createAt: string;
 }
 
 export const fetchTodos = async (): Promise<TodoType[]> => {

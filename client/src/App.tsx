@@ -1,22 +1,31 @@
+import styled from 'styled-components';
 import useTodosQuery from './hooks/todos/useTodosQuery';
 import useAddTodo from './hooks/todos/useAddTodo';
+import TodoList from './components/TodoList';
 
 export default function App() {
-  const { isLoading, isError, error, data } = useTodosQuery();
-
-  const addMutation = useAddTodo();
+  // const addMutation = useAddTodo();
   // addMutation.mutate(newTodo);
 
-  if (isLoading) return <h3>Loading...</h3>;
-  if (isError) return <h3>Error: {error}</h3>;
   return (
-    <div>
-      <h1>리액트 쿼리를 사용한 투두리스트</h1>
-      <ul>
-        {data?.map((todo) => (
-          <li>{todo.todo}</li>
-        ))}
-      </ul>
-    </div>
+    <Root>
+      <Container>
+        <h1>리액트 쿼리를 사용한 투두리스트</h1>
+        <TodoList />
+      </Container>
+    </Root>
   );
 }
+
+const Root = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Container = styled.div`
+  padding: 30px;
+  box-shadow: rgba(130, 130, 139, 0.137) 0px 7px 15px 0px;
+`;
