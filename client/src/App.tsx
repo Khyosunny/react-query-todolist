@@ -10,7 +10,7 @@ export default function App() {
   return (
     <Root>
       <Container>
-        <h1>리액트 쿼리를 사용한 투두리스트</h1>
+        <h1>To Do List</h1>
         <TodoList />
       </Container>
     </Root>
@@ -26,6 +26,11 @@ const Root = styled.div`
 `;
 
 const Container = styled.div`
+  min-width: 500px;
   padding: 30px;
   box-shadow: rgba(130, 130, 139, 0.137) 0px 7px 15px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
