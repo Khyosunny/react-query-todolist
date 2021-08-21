@@ -25,3 +25,11 @@ export const removeTodo = async (id: number) => {
   const { data } = await client.delete<TodoType[]>(`/todos/${id}`);
   return data;
 };
+
+export const updateTodo = async (newTodo: TodoType) => {
+  const { data } = await client.put<TodoType[]>(
+    `/todos/${newTodo.id}`,
+    newTodo
+  );
+  return data;
+};

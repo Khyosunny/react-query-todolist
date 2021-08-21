@@ -16,7 +16,7 @@ export default function TodoList({ todoQuery }: TodoListProps) {
   return (
     <TodoItemContainer>
       {data?.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} />
+        <TodoItem key={todo.id} data={todo} />
       ))}
     </TodoItemContainer>
   );

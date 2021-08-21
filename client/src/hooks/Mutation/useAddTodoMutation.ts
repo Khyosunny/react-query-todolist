@@ -5,7 +5,7 @@ import { TodoType } from '../../types/todoType';
 
 export default function useAddTodoMutation(): UseMutationResult<
   TodoType[],
-  AxiosError<any>,
+  AxiosError,
   TodoType,
   {
     previousTodos: TodoType[] | undefined;

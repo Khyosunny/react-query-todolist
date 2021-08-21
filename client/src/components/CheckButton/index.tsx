@@ -1,18 +1,19 @@
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import { TodoType } from '../../types/todoType';
 
 interface CheckButtonProps {
-  completed: boolean;
-  handleComplete: () => void;
+  data: TodoType;
+  handleComplete: (e: React.SyntheticEvent, data: TodoType) => void;
 }
 
 export default function CheckButton({
-  completed,
+  data,
   handleComplete,
 }: CheckButtonProps) {
   return (
-    <button onClick={handleComplete}>
-      {completed ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />}
+    <button onClick={(e) => handleComplete(e, data)}>
+      {data.completed ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />}
     </button>
   );
 }

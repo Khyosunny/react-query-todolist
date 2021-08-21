@@ -1,32 +1,36 @@
 import { AxiosError } from 'axios';
 import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
-import { removeTodo } from '../../lib/api/todos';
+import { updateTodo } from '../../lib/api/todos';
 import { TodoType } from '../../types/todoType';
 
-export default function useRemoveTodoMutation(): UseMutationResult<
+export default function useUpdateTodoMutation(): UseMutationResult<
   TodoType[],
   AxiosError,
-  number,
+  TodoType,
   {
     previousTodos: TodoType[] | undefined;
   }
 > {
   const queryClient = useQueryClient();
-  return useMutation(removeTodo, {
-    onMutate: async (id: number) => {
+  return useMutation(updateTodo, {
+    onMutate: async (updateTodo: TodoType) => {
       await queryClient.cancelQueries('todos');
       const previousTodos = queryClient.getQueryData<TodoType[]>('todos');
 
       if (previousTodos) {
-        const updataTodos = previousTodos.filter((todo) => todo.id !== id);
-        queryClient.setQueryData<TodoType[]>('todos', updataTodos);
+        previousTodos.forEach((todo) => {
+          if (todo.id === updateTodo.id) {
+            todo.todo = updateTodo.todo;
+          }
+        });
+        queryClient.setQueryData<TodoType[]>('todos', previousTodos);
       }
 
       return { previousTodos };
     },
     onError: (
       err: AxiosError,
-      variables: number,
+      variables: TodoType,
       context?: { previousTodos: TodoType[] | undefined }
     ) => {
       if (context?.previousTodos) {

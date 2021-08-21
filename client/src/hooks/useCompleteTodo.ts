@@ -6,8 +6,9 @@ export default function useCompleteTodo() {
   const completeMutation = useCompleteTodoMutation();
 
   const handleComplete = useCallback(
-    (todo: TodoType) => {
-      completeMutation.mutate(todo);
+    (e: React.SyntheticEvent, data: TodoType) => {
+      e.stopPropagation();
+      completeMutation.mutate(data);
     },
     [completeMutation]
   );
