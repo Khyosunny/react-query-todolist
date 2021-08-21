@@ -20,3 +20,8 @@ export const completeTodo = async (
   );
   return data;
 };
+
+export const removeTodo = async (id: number) => {
+  const { data } = await client.delete<TodoType[]>(`/todos/${id}`);
+  return data;
+};

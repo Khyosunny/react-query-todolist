@@ -1,31 +1,28 @@
 import { AxiosError } from 'axios';
 import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
-import { completeTodo } from '../../lib/api/todos';
+import { addTodo } from '../../lib/api/todos';
 import { TodoType } from '../../types/todoType';
 
-export default function useCompleteTodo(): UseMutationResult<
+export default function useAddTodoMutation(): UseMutationResult<
   TodoType[],
-  AxiosError,
+  AxiosError<any>,
   TodoType,
   {
     previousTodos: TodoType[] | undefined;
   }
 > {
   const queryClient = useQueryClient();
-  return useMutation(completeTodo, {
-    onMutate: async (updateTodo: TodoType) => {
+  return useMutation(addTodo, {
+    onMutate: async (newTodo: TodoType) => {
       await queryClient.cancelQueries('todos');
       const previousTodos = queryClient.getQueryData<TodoType[]>('todos');
 
       if (previousTodos) {
-        previousTodos.forEach((todo) => {
-          if (todo.id === updateTodo.id) {
-            todo.completed = !todo.completed;
-          }
-        });
-        queryClient.setQueryData<TodoType[]>('todos', previousTodos);
+        queryClient.setQueryData<TodoType[]>('todos', (old) => [
+          ...(old as TodoType[]),
+          newTodo,
+        ]);
       }
-
       return { previousTodos };
     },
     onError: (

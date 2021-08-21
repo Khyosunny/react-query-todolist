@@ -14,11 +14,6 @@
       "id": 3,
       "todo": "프로그래머스 문제 풀기",
       "completed": false
-    },
-    {
-      "id": 4,
-      "todo": "정곤이랑 놀기",
-      "completed": false
     }
   ]
 }

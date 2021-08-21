@@ -1,6 +1,5 @@
-import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import useAddTodo from '../../hooks/todos/useAddTodo';
+import useAddTodo from '../../hooks/useAddTodo';
 import { TodoType } from '../../types/todoType';
 import Button from '../Button';
 
@@ -9,25 +8,7 @@ interface SubmitTodoProps {
 }
 
 export default function SubmitTodo({ data }: SubmitTodoProps) {
-  const [todo, setTodo] = useState('');
-  const addMutation = useAddTodo();
-
-  const handleAddTodo = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      setTodo('');
-      addMutation.mutate({
-        id: data[data.length - 1].id + 1,
-        todo,
-        completed: false,
-      });
-    },
-    [data, addMutation, todo]
-  );
-
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setTodo(e.target.value);
-  }, []);
+  const { todo, handleChange, handleAddTodo } = useAddTodo(data);
 
   return (
     <Form onSubmit={handleAddTodo}>

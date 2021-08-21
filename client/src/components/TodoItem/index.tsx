@@ -1,24 +1,15 @@
-import { useCallback } from 'react';
 import styled from 'styled-components';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import { TodoType } from '../../types/todoType';
-import useCompleteTodo from '../../hooks/todos/useCompleteTodo';
+import useCompleteTodo from '../../hooks/useCompleteTodo';
 
 interface TodoItemProps {
   todo: TodoType;
-  handleComplete?: (id: number) => void;
 }
 
 export default function TodoItem({ todo }: TodoItemProps) {
-  const completeMutation = useCompleteTodo();
-
-  const handleComplete = useCallback(
-    (todo: TodoType) => {
-      completeMutation.mutate(todo);
-    },
-    [completeMutation]
-  );
+  const { handleComplete } = useCompleteTodo();
 
   return (
     <Item completed={todo.completed} onClick={() => handleComplete(todo)}>
@@ -39,7 +30,6 @@ const Item = styled.li<styleProps>`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  /* background-color: orange; */
   color: ${(p) => (p.completed ? '#b9b9b9' : 'black')};
   text-decoration: ${(p) => (p.completed ? 'line-through' : 'none')};
   border-bottom: 2px solid #000000;

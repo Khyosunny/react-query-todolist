@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import TodoList from './components/TodoList';
 import SubmitTodo from './components/SubmitTodo';
-import useTodosQuery from './hooks/todos/useTodosQuery';
+import useTodosQuery from './hooks/Query/useTodosQuery';
 
 export default function App() {
   const todoQuery = useTodosQuery();
