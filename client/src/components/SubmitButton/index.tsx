@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 import CreateIcon from '@material-ui/icons/Create';
 
-export default function Button() {
+export default function SubmitButton() {
   return (
-    <CustomButton type="submit">
+    <Button type="submit">
       <CreateIcon />
-    </CustomButton>
+    </Button>
   );
 }
 
-const CustomButton = styled.button`
+const Button = styled.button`
   width: 20%;
   height: 50px;
   background-color: #000;
