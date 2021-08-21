@@ -1,17 +1,30 @@
-import useTodosQuery from '../../hooks/todos/useTodosQuery';
+import { AxiosError } from 'axios';
+import styled from 'styled-components';
+import { UseQueryResult } from 'react-query';
+import { TodoType } from '../../types/todoType';
 import TodoItem from '../TodoItem';
 
-export default function TodoList() {
-  const { isLoading, isError, error, data } = useTodosQuery();
+interface TodoListProps {
+  todoQuery: UseQueryResult<TodoType[], AxiosError>;
+}
+
+export default function TodoList({ todoQuery }: TodoListProps) {
+  const { isLoading, isError, error, data } = todoQuery;
 
   if (isLoading) return <h3>Loading...</h3>;
   if (isError) return <h3>Error: {error}</h3>;
-
   return (
-    <ul>
+    <TodoItemContainer>
       {data?.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
-    </ul>
+    </TodoItemContainer>
   );
 }
+
+const TodoItemContainer = styled.ul`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

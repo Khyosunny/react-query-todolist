@@ -1,18 +1,18 @@
 import styled from 'styled-components';
-import useTodosQuery from './hooks/todos/useTodosQuery';
-import useAddTodo from './hooks/todos/useAddTodo';
 import TodoList from './components/TodoList';
+import SubmitTodo from './components/SubmitTodo';
+import useTodosQuery from './hooks/todos/useTodosQuery';
 
 export default function App() {
-  // const addMutation = useAddTodo();
-  // addMutation.mutate(newTodo);
+  const todoQuery = useTodosQuery();
 
   return (
     <Root>
-      <Container>
+      <TodoListContainer>
         <h1>To Do List</h1>
-        <TodoList />
-      </Container>
+        <TodoList todoQuery={todoQuery} />
+        <SubmitTodo data={todoQuery.data ?? []} />
+      </TodoListContainer>
     </Root>
   );
 }
@@ -25,9 +25,9 @@ const Root = styled.div`
   align-items: center;
 `;
 
-const Container = styled.div`
-  min-width: 500px;
-  padding: 30px;
+const TodoListContainer = styled.div`
+  min-width: 450px;
+  padding: 30px 40px;
   box-shadow: rgba(130, 130, 139, 0.137) 0px 7px 15px 0px;
   display: flex;
   justify-content: center;

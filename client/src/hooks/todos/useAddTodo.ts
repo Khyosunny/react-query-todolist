@@ -1,10 +1,11 @@
 import { AxiosError } from 'axios';
 import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
-import { addTodo, TodoType } from '../../lib/api/todos';
+import { addTodo } from '../../lib/api/todos';
+import { TodoType } from '../../types/todoType';
 
 export default function useAddTodo(): UseMutationResult<
   TodoType[],
-  unknown,
+  AxiosError<any>,
   TodoType,
   {
     previousTodos: TodoType[] | undefined;
@@ -17,12 +18,11 @@ export default function useAddTodo(): UseMutationResult<
       const previousTodos = queryClient.getQueryData<TodoType[]>('todos');
 
       if (previousTodos) {
-        queryClient.setQueryData<TodoType[]>('todos', [
-          ...previousTodos,
+        queryClient.setQueryData<TodoType[]>('todos', (old) => [
+          ...(old as TodoType[]),
           newTodo,
         ]);
       }
-
       return { previousTodos };
     },
     onError: (
