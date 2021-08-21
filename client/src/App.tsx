@@ -9,7 +9,7 @@ export default function App() {
   return (
     <Root>
       <TodoListContainer>
-        <h1>To Do List</h1>
+        <Title>✏️To Do List</Title>
         <TodoList todoQuery={todoQuery} />
         <SubmitTodo data={todoQuery.data ?? []} />
       </TodoListContainer>
@@ -23,14 +23,20 @@ const Root = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #ffecc2;
 `;
 
 const TodoListContainer = styled.div`
   min-width: 450px;
   padding: 30px 40px;
-  box-shadow: rgba(130, 130, 139, 0.137) 0px 7px 15px 0px;
+  box-shadow: rgba(199, 148, 89, 0.137) 0px 5px 10px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #fff;
+`;
+
+const Title = styled.h1`
+  margin-bottom: 20px;
 `;

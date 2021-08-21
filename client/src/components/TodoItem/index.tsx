@@ -35,6 +35,10 @@ const RemoveButton = styled.button`
   position: absolute;
   right: 0;
   display: none;
+
+  svg {
+    fill: red;
+  }
 `;
 
 const Item = styled.li<styleProps>`
@@ -45,7 +49,7 @@ const Item = styled.li<styleProps>`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: ${(p) => (p.completed ? '#b9b9b9' : 'black')};
+  color: ${(p) => (p.completed ? '#c7bca7' : 'black')};
   text-decoration: ${(p) => (p.completed ? 'line-through' : 'none')};
   border-bottom: 2px solid #000000;
 
