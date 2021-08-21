@@ -3,7 +3,7 @@
     {
       "id": 1,
       "todo": "리액트 쿼리 개념 학습",
-      "completed": false
+      "completed": true
     },
     {
       "id": 2,
