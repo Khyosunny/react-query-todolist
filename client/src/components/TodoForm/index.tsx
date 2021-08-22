@@ -3,11 +3,11 @@ import { TodoType } from '../../types/todoType';
 import useAddTodo from '../../hooks/useAddTodo';
 import SubmitButton from '../SubmitButton';
 
-interface SubmitTodoProps {
+interface TodoFormProps {
   data: TodoType[];
 }
 
-export default function SubmitTodo({ data }: SubmitTodoProps) {
+export default function TodoForm({ data }: TodoFormProps) {
   const { todo, handleChange, handleAddTodo } = useAddTodo(data);
 
   return (

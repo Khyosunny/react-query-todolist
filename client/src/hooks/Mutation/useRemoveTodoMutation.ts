@@ -4,7 +4,7 @@ import { removeTodo } from '../../api/todos';
 import { TodoType } from '../../types/todoType';
 
 export default function useRemoveTodoMutation(): UseMutationResult<
-  TodoType[],
+  TodoType,
   AxiosError,
   number,
   {

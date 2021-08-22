@@ -4,7 +4,7 @@ import { addTodo } from '../../api/todos';
 import { TodoType } from '../../types/todoType';
 
 export default function useAddTodoMutation(): UseMutationResult<
-  TodoType[],
+  TodoType,
   AxiosError,
   TodoType,
   {
