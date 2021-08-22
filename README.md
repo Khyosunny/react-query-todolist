@@ -25,8 +25,6 @@ Todo list를 만든 이유는 CRUD 기능이 모두 들어가기 때문에 `useQ
 
 - [📁 src/hooks/](#srchooks)
 
-- [📁 src/types/](#srctypes)
-
 - [후기](#후기)
 
 <br />
