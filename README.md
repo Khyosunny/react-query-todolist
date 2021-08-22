@@ -29,6 +29,10 @@ Todo list를 만든 이유는 CRUD 기능이 모두 들어가기 때문에 `useQ
 
 <br />
 
+![react-query-todo](https://user-images.githubusercontent.com/85142612/130359334-0566a299-86b9-4658-813b-059b1a621df5.gif)
+
+<br />
+
 # Installation
 
 ## /client
