@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { useQuery, UseQueryOptions } from 'react-query';
-import { fetchTodos } from '../../lib/api/todos';
+import { fetchTodos } from '../../api/todos';
 import { TodoType } from '../../types/todoType';
 
 export default function useTodosQuery<TData = TodoType[]>(

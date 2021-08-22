@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
-import { removeTodo } from '../../lib/api/todos';
+import { removeTodo } from '../../api/todos';
 import { TodoType } from '../../types/todoType';
 
 export default function useRemoveTodoMutation(): UseMutationResult<

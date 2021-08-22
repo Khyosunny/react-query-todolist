@@ -1,5 +1,5 @@
 import client from '../client';
-import { TodoType } from '../../../types/todoType';
+import { TodoType } from '../../types/todoType';
 
 export const fetchTodos = async (): Promise<TodoType[]> => {
   const { data } = await client.get<TodoType[]>(`/todos`);

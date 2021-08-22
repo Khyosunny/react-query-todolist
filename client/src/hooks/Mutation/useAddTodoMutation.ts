@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
-import { addTodo } from '../../lib/api/todos';
+import { addTodo } from '../../api/todos';
 import { TodoType } from '../../types/todoType';
 
 export default function useAddTodoMutation(): UseMutationResult<
